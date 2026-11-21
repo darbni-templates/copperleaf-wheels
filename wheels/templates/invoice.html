@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Invoice {{ code }}{% endblock %}
+{% block content %}
+<h1>Invoice {{ code }}</h1>
+<p>{{ car.name }}, from {{ booking.start_date }} to {{ booking.end_date }}. Status: {{ booking.status }}.</p>
+<ul class="invoice">
+  {% for label, fils in lines %}
+  <li>{{ label }}: {% if fils < 0 %}-{{ (-fils) | bhd }}{% else %}{{ fils | bhd }}{% endif %}</li>
+  {% endfor %}
+</ul>
+<p class="pay"><a href="/paylater/{{ code }}">Pay later with PayLater</a>: book now, pay in 3.</p>
+{% endblock %}

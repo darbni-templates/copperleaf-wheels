@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Find a car{% endblock %}
+{% block content %}
+<h1>Find a free car</h1>
+<form method="get" action="/search">
+  <label>Pickup day <input type="date" name="start" value="{{ form.start }}"></label>
+  <label>Return day <input type="date" name="end" value="{{ form.end }}"></label>
+  <label>Seats, at least <input type="number" name="seats" min="0" value="{{ form.seats }}"></label>
+  <label>Gearbox
+    <select name="transmission">
+      <option value="">Any</option>
+      <option value="automatic" {% if form.transmission == "automatic" %}selected{% endif %}>Automatic</option>
+      <option value="manual" {% if form.transmission == "manual" %}selected{% endif %}>Manual</option>
+    </select>
+  </label>
+  <button>Search</button>
+</form>
+{% if error %}<p class="error">Choose a pickup day and a return day.</p>{% endif %}
+{% if searched %}
+<h2>{{ count }} cars free from {{ start }} to {{ end }}</h2>
+<div class="cards">
+  {% for car in cars %}
+  {% include "_car_card.html" %}
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

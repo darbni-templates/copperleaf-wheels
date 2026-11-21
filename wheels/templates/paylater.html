@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}PayLater{% endblock %}
+{% block content %}
+<h1>Pay later with PayLater</h1>
+<p>Booking {{ code }}: {{ count }} monthly payments of {{ each | bhd }}, no interest.</p>
+<form method="post" action="/paylater/{{ code }}">
+  <button>Continue to PayLater</button>
+</form>
+{% endblock %}

@@ -1,0 +1,6 @@
+{# One car in a list: used by /cars and /search. Needs `car`. #}
+<article class="car-card">
+  <h3><a href="/cars/{{ car.id }}">{{ car.name }}</a></h3>
+  <p class="category">{{ car.category | capitalize }}</p>
+  <p class="price">{{ car.daily_fils | bhd }} per day</p>
+</article>

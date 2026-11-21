@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Bookings{% endblock %}
+{% block content %}
+<h1>All bookings</h1>
+<ul>
+  {% for row in rows %}
+  <li>{{ code_of(row) }}: {{ row.car_name }}, {{ row.driver_name }}, {{ row.start_date }} to {{ row.end_date }}, {{ row.status }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
